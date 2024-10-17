@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
+import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CSSTransition } from "react-transition-group";
 // import BackspaceIcon from '@material-ui/icons/Backspace';
 // import BackspaceIcon from '@mui/icons-material/Backspace';
-import styles from './Filter.module.css';
-import { getFilter, selectGetContacts } from '../../redux/contacts/selectors';
-import { changeFilter, clearFilterInput } from '../../redux/contacts/slice';
+import styles from "./Filter.module.css";
+import { getFilter, selectGetContacts } from "../../redux/contacts/selectors";
+import { changeFilter, clearFilterInput } from "../../redux/contacts/slice";
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function Filter() {
       <CSSTransition
         in={contacts.length > 0}
         timeout={250}
-        classNames="fade"
+        classNames="fade" 
         unmountOnExit
       >
         <label className={styles.TaskList_item}>
@@ -31,7 +31,7 @@ export default function Filter() {
             className={styles.TaskEditor_input}
             type="text"
             value={value}
-            onChange={e => {
+            onChange={(e) => {
               dispatch(changeFilter(e.target.value));
             }}
             name="filter"

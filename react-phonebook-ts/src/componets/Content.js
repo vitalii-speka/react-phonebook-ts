@@ -7,7 +7,7 @@ import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import PublicRouteRegist from './PublicRouteRegist';
 import paths from '../paths';
-import { useAuth } from '../hooks/useAuth.js';
+import { useAuth } from '../hooks/useAuth';
 import { refreshCurrentUser } from '../redux/auth/operations.js';
 
 

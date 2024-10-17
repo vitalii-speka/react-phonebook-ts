@@ -24,11 +24,15 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistReducer<ReturnType<typeof authReducer>>(
+      authPersistConfig,
+      authReducer
+    ),
+    // auth: persistReducer(authPersistConfig, authReducer),
     // contacts: phonebookReducer,
     contacts: contactsReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
@@ -38,6 +42,10 @@ export const store = configureStore({
   // devTools: process.env.NODE_ENV === 'development',
 });
 
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
 export const persistor = persistStore(store);
 
-export type RootState = ReturnType<typeof store.getState>;
+
+

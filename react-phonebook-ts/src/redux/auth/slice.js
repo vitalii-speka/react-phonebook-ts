@@ -1,5 +1,21 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshCurrentUser } from './operations';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { register, logIn, logOut, refreshCurrentUser } from "./operations";
+// import { IInitialState } from "../../interface-ts/interface";
+
+/*  interface
+
+
+const initialState: IInitialState = {
+  isRegisterIn: false,
+  isLoading: false,
+  isLoggedIn: false,
+  token: null,
+  user: { id: null, name: null, email: null, subscription: null, avatar: null },
+  isRefreshing: false,
+  error: null,
+};
+
+*/
 
 const initialState = {
   isRegisterIn: false,
@@ -24,13 +40,13 @@ const handleResetState = (state, _) => {
   state.isRegisterIn = false;
   state.isLoggedIn = false;
   state.isLoading = false;
-  state.error = '';
+  state.error = "";
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.user;
@@ -48,7 +64,7 @@ const authSlice = createSlice({
       })
       // .addCase(signInGoogle.fulfilled,signInGoogle.pending, signInGoogle.rejected, (state, action) => {
       // })
-      .addCase(refreshCurrentUser.pending, state => {
+      .addCase(refreshCurrentUser.pending, (state) => {
         state.isRefreshing = true;
       })
       .addCase(refreshCurrentUser.fulfilled, (state, _) => {
@@ -57,11 +73,11 @@ const authSlice = createSlice({
       })
       .addMatcher(
         isAnyOf(refreshCurrentUser.rejected, logOut.fulfilled),
-        handleResetState,
+        handleResetState
       )
       .addMatcher(
         isAnyOf(register.pending, logIn.pending, logOut.pending, logIn.pending),
-        handlePending,
+        handlePending
       )
       .addMatcher(isAnyOf(register.rejected, logIn.rejected), handleRejected);
   },
