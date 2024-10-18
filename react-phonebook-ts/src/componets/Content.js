@@ -1,23 +1,22 @@
-import React, { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import LinearIndeterminate from './spiner/LinearIndeterminate';
+import React, { lazy, Suspense, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import LinearIndeterminate from "./spiner/LinearIndeterminate";
 // import routes from '../routes';
-import PublicRoute from './PublicRoute';
-import PrivateRoute from './PrivateRoute';
-import PublicRouteRegist from './PublicRouteRegist';
-import paths from '../paths';
-import { useAuth } from '../hooks/useAuth';
-import { refreshCurrentUser } from '../redux/auth/operations.js';
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
+import PublicRouteRegist from "./PublicRouteRegist";
+import paths from "../paths";
+import { useAuth } from "../hooks/useAuth";
+import { refreshCurrentUser } from "../redux/auth/operations.ts";
 
-
-const HomePage = lazy(() => import('../views/HomePage/HomePage.js'));
-const LoginPage = lazy(() => import('../views/LoginPage/LoginPage.js'));
+const HomePage = lazy(() => import("../views/HomePage/HomePage.js"));
+const LoginPage = lazy(() => import("../views/LoginPage/LoginPage.js"));
 const RegisterPage = lazy(() =>
-  import('../views/RegisterPage/RegisterPage.js'),
+  import("../views/RegisterPage/RegisterPage.js")
 );
 const ContactsPage = lazy(() =>
-  import('../views/ContactsPage/ContactsPage.js'),
+  import("../views/ContactsPage/ContactsPage.js")
 );
 
 const Content = () => {

@@ -1,21 +1,7 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { register, logIn, logOut, refreshCurrentUser } from "./operations";
-// import { IInitialState } from "../../interface-ts/interface";
+import { IAuthState } from "../../interface-ts/interface";
 
-/*  interface
-
-
-const initialState: IInitialState = {
-  isRegisterIn: false,
-  isLoading: false,
-  isLoggedIn: false,
-  token: null,
-  user: { id: null, name: null, email: null, subscription: null, avatar: null },
-  isRefreshing: false,
-  error: null,
-};
-
-*/
 
 const initialState = {
   isRegisterIn: false,
@@ -25,16 +11,17 @@ const initialState = {
   user: { id: null, name: null, email: null, subscription: null, avatar: null },
   isRefreshing: false,
   error: null,
-};
+// };
+} as IAuthState;
 
-const handlePending = (state, _) => {
+const handlePending = (state: any, action: any) => {
   state.isLoading = true;
 };
-const handleRejected = (state, { payload }) => {
+const handleRejected = (state: any, { payload }: any) => {
   state.isLoading = false;
   state.error = payload;
 };
-const handleResetState = (state, _) => {
+const handleResetState = (state: any, action: any) => {
   state.user = initialState.user;
   state.token = null;
   state.isRegisterIn = false;
@@ -43,19 +30,21 @@ const handleResetState = (state, _) => {
   state.error = "";
 };
 
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  extraReducers: (builder) => {
+  reducers: {},
+  extraReducers: builder => {
     builder
-      .addCase(register.fulfilled, (state, { payload }) => {
+      .addCase(register.fulfilled, (state: any, { payload }) => {
         state.user = payload.user;
         state.isRegisterIn = true;
         state.isLoggedIn = false;
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(logIn.fulfilled, (state, { payload }) => {
+      .addCase(logIn.fulfilled, (state: any, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isRegisterIn = true;
@@ -64,10 +53,10 @@ const authSlice = createSlice({
       })
       // .addCase(signInGoogle.fulfilled,signInGoogle.pending, signInGoogle.rejected, (state, action) => {
       // })
-      .addCase(refreshCurrentUser.pending, (state) => {
+      .addCase(refreshCurrentUser.pending, (state: any) => {
         state.isRefreshing = true;
       })
-      .addCase(refreshCurrentUser.fulfilled, (state, _) => {
+      .addCase(refreshCurrentUser.fulfilled, (state: any, _) => {
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
