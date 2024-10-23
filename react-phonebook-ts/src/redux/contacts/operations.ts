@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../auth/operations";
-import { IContact } from "../../interface-ts/interface";
+import { IContact } from "../../interface-ts/IContact";
 
 /* getContacts  before
 export const getContacts = createAsyncThunk(

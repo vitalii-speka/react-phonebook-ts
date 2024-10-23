@@ -4,7 +4,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   IRegisterCredentials,
   ILoginCredentials,
-} from "../../interface-ts/interface";
+} from "../../interface-ts/ICredentials";
 
 export const instance = axios.create({
   baseURL: "https://nodejs-homework-rest-api-y0ve.onrender.com/api", // production

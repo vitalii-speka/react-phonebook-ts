@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { register, logIn, logOut, refreshCurrentUser } from "./operations";
-import { IAuthState } from "../../interface-ts/interface";
+import { IAuthState } from "../../interface-ts/IAuth";
 
 
 const initialState = {

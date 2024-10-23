@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
 import { getContacts, addContact, removeContact } from "./operations";
-import { IContactState, IContact } from "../../interface-ts/interface";
+import { IContactState, IContact } from "../../interface-ts/IContact";
 
 const initialState = {
   items: [],
