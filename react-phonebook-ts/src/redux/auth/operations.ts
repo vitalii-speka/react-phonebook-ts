@@ -54,16 +54,17 @@ export const register = createAsyncThunk(
   }
 );
 
+
 export const logIn = createAsyncThunk(
   "users/login",
-  async (credentials: ILoginCredentials, { rejectWithValue }: any) => {
+  async (credentials: ILoginCredentials, { rejectWithValue }) => {
     try {
       const res = await instance.post("/users/login", credentials);
       token.set(res.data.token);
       return res.data;
     } catch (error) {
       if (error instanceof Error) {
-        return rejectWithValue(error);
+        return rejectWithValue(error.message);
       } else {
         console.log("Unexpected error", error);
       }
@@ -77,21 +78,22 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk(
   "auth/logOut",
-  async (_, { rejectWithValue }: any) => {
+  async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.post("/users/logout");
       token.unset();
       return data.message;
     } catch (error) {
       if (error instanceof Error) {
-        return rejectWithValue(error);
+        return rejectWithValue(error.message);
       } else {
         console.log("Unexpected error", error);
       }
-
-      // return rejectWithValue(
-      //   `${error.response.data.message}, code: ${error.response.data.code}`
-      // );
+      /*  
+      return rejectWithValue(
+        `${error.response.data.message}, code: ${error.response.data.code}`
+      );
+      */
     }
   }
 );
@@ -109,7 +111,7 @@ export const refreshCurrentUser = createAsyncThunk(
       return data.data;
     } catch (error) {
       if (error instanceof Error) {
-        return thunkApi.rejectWithValue(error);
+        return thunkApi.rejectWithValue(error.message);
       } else {
         console.log("Unexpected error", error);
       }

@@ -15,6 +15,19 @@ export interface IAuthState {
   isLoading: boolean;
   error: string | null;
 }
+export interface IContact {
+  name: string;
+  number: string | number;
+  _id?: string;
+  id?: string;
+}
+
+export interface IContactState {
+  items: IContact[];
+  filter: string;
+  isLoading: boolean;
+  error: null | string;
+}
 
 export interface IRegisterCredentials {
   name: string;
