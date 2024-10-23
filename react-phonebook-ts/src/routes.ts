@@ -9,7 +9,7 @@ const routes = [
 
     component: lazy(() =>
       import(
-        './views/HomePage/HomePage.js' /* webpackChunkName: "home-view" */
+        './views/HomePage/HomePage' /* webpackChunkName: "home-view" */
       ),
     ),
     private: false,

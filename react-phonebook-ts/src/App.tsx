@@ -1,8 +1,8 @@
-import React from 'react';
-import AppBar from './componets/AppBar';
-import Container from './componets/Container';
-import './style/App.css';
-import Content from './componets/Content';
+import React from "react";
+import AppBar from "./componets/AppBar";
+import { Container } from "./componets/Container/Container";
+import "./style/App.css";
+import Content from "./componets/Content";
 
 export default function App() {
   return (

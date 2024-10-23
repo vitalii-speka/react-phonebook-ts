@@ -10,7 +10,7 @@ import paths from "../paths";
 import { useAuth } from "../hooks/useAuth";
 import { refreshCurrentUser } from "../redux/auth/operations.ts";
 
-const HomePage = lazy(() => import("../views/HomePage/HomePage.js"));
+const HomePage = lazy(() => import("../views/HomePage/HomePage.tsx"));
 const LoginPage = lazy(() => import("../views/LoginPage/LoginPage.js"));
 const RegisterPage = lazy(() =>
   import("../views/RegisterPage/RegisterPage.js")

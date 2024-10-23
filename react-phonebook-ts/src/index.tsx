@@ -8,17 +8,20 @@ import './style/index.css';
 import App from './App';
 import { store, persistor } from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import { GlobalStyle } from 'componets/GlobalStyle';
 
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+    {/* <GlobalStyle> */}
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    {/* </GlobalStyle> */}
   </React.StrictMode>
 );
 

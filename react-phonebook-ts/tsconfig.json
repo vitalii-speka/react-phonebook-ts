@@ -14,7 +14,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    // "baseUrl": "types",  ---> with styled.componet
+    "typeRoots": ["node_modules/@types", "src/types", "@types"]
   },
-  "include": ["src"]
+  "include": ["src", "src/declaration.d.ts", "@types"]
 }
