@@ -1,10 +1,14 @@
-declare module '*.svg' {
+declare module "*.svg" {
   const content: any;
   export default content;
 }
 
-declare module '*.png' {
+declare module "*.png" {
   const content: any;
   export default content;
 }
 
+declare module "*.module.css" {
+  const classes: { [key: string]: string };
+  export default classes;
+}

@@ -1,42 +1,46 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import styles from '../../componets/ContactForm/ContactForm.module.css';
-import { CSSTransition } from 'react-transition-group';
-import { logIn } from '../../redux/auth/operations';
-import { useAuth } from '../../hooks';
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import styles from "../../componets/ContactForm/ContactForm.module.css";
+import { CSSTransition } from "react-transition-group";
+import { logIn } from "../../redux/auth/operations";
+import { useAuth } from "../../hooks";
 
-import Alert from '../../componets/Alert';
-import LinearIndeterminate from '../../componets/spiner/LinearIndeterminate';
+import Alert from "../../componets/Alert";
+import LinearIndeterminate from "../../componets/spiner/LinearIndeterminate";
+import { AppDispatch } from "redux/store";
 // import { signInGoogle } from '../../redux/auth/operations';
 
 export default function LoginPage() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { isLoading, isRegisterIn, user, errorAuth } = useAuth();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [alertError, setAlertError] = useState(false);
-  const [notification, setNotification] = useState(null);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [alertError, setAlertError] = useState<boolean>(false);
+  const [notification, setNotification] = useState<null>(null);
 
-  const handleChange = useCallback(e => {
-    const { name, value } = e.currentTarget;
+  const handleChange = useCallback(
+    (e: React.FormEvent<HTMLInputElement>): void => {
+      const { name, value } = e.currentTarget;
 
-    switch (name) {
-      case 'email':
-        setEmail(value);
-        break;
+      switch (name) {
+        case "email":
+          setEmail(value);
+          break;
 
-      case 'password':
-        setPassword(value);
-        break;
+        case "password":
+          setPassword(value);
+          break;
 
-      default:
-        break;
-    }
-  }, []);
+        default:
+          break;
+      }
+    },
+    []
+  );
 
   const handleSubmit = useCallback(
-    e => {
+    (e: React.FormEvent) => {
       e.preventDefault();
 
       const alertReset = () => {
@@ -44,31 +48,31 @@ export default function LoginPage() {
         setNotification(null);
       };
 
-      const alertNotifocation = notification => {
+      const alertNotifocation = (notification: any) => {
         setAlertError(true);
         setNotification(notification);
 
         setTimeout(alertReset, 2500);
       };
 
-      if (email === '') {
-        alertNotifocation('Please enter email');
+      if (email === "") {
+        alertNotifocation("Please enter email");
         return;
       }
 
-      if (password === '') {
+      if (password === "") {
         alertNotifocation(`Please enter password`);
         return;
       }
 
       dispatch(logIn({ email: email, password: password }));
 
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
       setAlertError(false);
       setNotification(null);
     },
-    [dispatch, email, password],
+    [dispatch, email, password]
   );
 
   /*
@@ -84,8 +88,8 @@ export default function LoginPage() {
           <LinearIndeterminate />
           <Alert
             text={isLoading}
-            alert={'Please wait, sending a request'}
-            variant={'secondary'}
+            alert={"Please wait, sending a request"}
+            variant={"secondary"}
           />
         </>
       ) : (
@@ -136,9 +140,9 @@ export default function LoginPage() {
         </CSSTransition>
       )}
 
-      <Alert text={alertError} alert={notification} variant={'info'} />
+      <Alert text={alertError} alert={notification} variant={"info"} />
 
-      {errorAuth && <Alert text={true} alert={errorAuth} variant={'danger'} />}
+      {errorAuth && <Alert text={true} alert={errorAuth} variant={"danger"} />}
     </>
   );
 }
