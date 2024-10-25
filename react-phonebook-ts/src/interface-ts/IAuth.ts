@@ -13,5 +13,5 @@ export interface IAuthState {
   token: string | null;
   user: IUser;
   isRefreshing: boolean;
-  error: string | null;
+  error: any;
 }

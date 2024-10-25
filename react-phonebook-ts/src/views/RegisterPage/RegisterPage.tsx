@@ -3,25 +3,26 @@ import { useDispatch } from 'react-redux';
 import './RegisterPage.css';
 import '../../componets/AppBar/AppBar.css';
 import { register } from '../../redux/auth/operations';
-import Alert from '../../componets/Alert';
+import { Alert } from "componets/Alert";
 import styles from '../../componets/ContactForm/ContactForm.module.css';
 import { CSSTransition } from 'react-transition-group';
 import LinearIndeterminate from '../../componets/spiner/LinearIndeterminate';
 import { useAuth } from '../../hooks';
 import { NavLink } from 'react-router-dom';
 import paths from '../../paths';
+import { AppDispatch } from 'redux/store';
 
 export default function RegisterPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [alertError, setAlertError] = useState(false);
-  const [notification, setNotification] = useState(null);
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [alertError, setAlertError] = useState<boolean>(false);
+  const [notification, setNotification] = useState<string | null>(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { isRegisterIn, isLoading, errorAuth } = useAuth();
 
-  const handleChange = useCallback(e => {
+  const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
 
     switch (name) {
@@ -55,10 +56,10 @@ export default function RegisterPage() {
     setNotification(null);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const alertNotifocation = notification => {
+    const alertNotifocation = (notification: string) => {
       setAlertError(true);
       setNotification(notification);
 

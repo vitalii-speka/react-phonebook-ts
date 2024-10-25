@@ -5,9 +5,9 @@ import { CSSTransition } from "react-transition-group";
 import { logIn } from "../../redux/auth/operations";
 import { useAuth } from "../../hooks";
 
-import Alert from "../../componets/Alert";
 import LinearIndeterminate from "../../componets/spiner/LinearIndeterminate";
 import { AppDispatch } from "redux/store";
+import { Alert } from "componets/Alert";
 // import { signInGoogle } from '../../redux/auth/operations';
 
 export default function LoginPage() {
@@ -17,7 +17,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [alertError, setAlertError] = useState<boolean>(false);
-  const [notification, setNotification] = useState<null>(null);
+  const [notification, setNotification] = useState<string | null>(null);
 
   const handleChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>): void => {
@@ -48,7 +48,7 @@ export default function LoginPage() {
         setNotification(null);
       };
 
-      const alertNotifocation = (notification: any) => {
+      const alertNotifocation = (notification: string) => {
         setAlertError(true);
         setNotification(notification);
 

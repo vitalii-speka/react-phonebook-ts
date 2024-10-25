@@ -2,12 +2,12 @@ import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useSelector, useDispatch } from 'react-redux';
 import { getVisibleContacts } from '../../redux/contacts/selectors';
-import PropTypes from 'prop-types';
 import './ContactList.css';
 import { removeContact } from '../../redux/contacts/operations';
+import { AppDispatch } from 'redux/store';
 
 export default function ContactList() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const contactsVisible = useSelector(getVisibleContacts);
 
@@ -44,6 +44,7 @@ export default function ContactList() {
   );
 }
 
+/* .prototype
 ContactList.prototype = {
   onRemoveContact: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
@@ -53,3 +54,4 @@ ContactList.prototype = {
     }),
   ),
 };
+*/

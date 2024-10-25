@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import ContactForm from '../../componets/ContactForm';
-import ContactList from '../../componets/ContactList';
-import Filter from '../../componets/Filter';
-import '../../style/App.css';
-import ContactsTitle from '../../componets/ContactsTitle';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import ContactForm from "../../componets/ContactForm";
+import ContactList from "../../componets/ContactList";
+import Filter from "../../componets/Filter";
+import "../../style/App.css";
+import ContactsTitle from "../../componets/ContactsTitle";
 
 import {
   getisLoadingContacts,
   selectGetContacts,
   getContactsError,
-} from '../../redux/contacts/selectors';
+} from "../../redux/contacts/selectors";
 
-import LinearIndeterminate from '../../componets/spiner/LinearIndeterminate';
-import Alert from '../../componets/Alert';
-import { useAuth } from '../../hooks';
-import { getContacts } from '../../redux/contacts/operations';
-import { instance } from '../../redux/auth/operations';
+import LinearIndeterminate from "../../componets/spiner/LinearIndeterminate";
+import { Alert } from "componets/Alert";
+import { useAuth } from "../../hooks";
+import { getContacts } from "../../redux/contacts/operations";
+import { instance } from "../../redux/auth/operations";
+import { AppDispatch } from "redux/store";
 
 export default function ContactsPage() {
   const contacts = useSelector(selectGetContacts);
@@ -25,7 +26,7 @@ export default function ContactsPage() {
 
   const { token, user } = useAuth();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (token) {
@@ -63,7 +64,9 @@ export default function ContactsPage() {
           <ContactList />
         </>
       )}
-      {errorContacts && <Alert text={errorContacts} alert={errorContacts} />}
+      {errorContacts && (
+        <Alert text={errorContacts} alert={errorContacts} variant={"danger"} />
+      )}
     </div>
   );
 }

@@ -1,49 +1,50 @@
-import { lazy } from 'react';
-import paths from './paths';
+import { lazy } from "react";
+import paths from "./paths";
 
 const routes = [
   {
-    name: 'Home',
+    name: "Home",
     path: paths.home,
-    
 
-    component: lazy(() =>
-      import(
-        './views/HomePage/HomePage' /* webpackChunkName: "home-view" */
-      ),
+    component: lazy(
+      () =>
+        import("./views/HomePage/HomePage" /* webpackChunkName: "home-view" */)
     ),
     private: false,
     restricted: false,
   },
   {
-    name: 'Login',
+    name: "Login",
     path: paths.login,
-    component: lazy(() =>
-      import(
-        './views/LoginPage/LoginPage.js' /* webpackChunkName: "logim-view" */
-      ),
+    component: lazy(
+      () =>
+        import(
+          "./views/LoginPage/LoginPage" /* webpackChunkName: "login-view" */
+        )
     ),
     private: false,
     restricted: true,
   },
   {
-    name: 'Register',
+    name: "Register",
     path: paths.register,
-    component: lazy(() =>
-      import(
-        './views/RegisterPage/RegisterPage.js' /* webpackChunkName: "google-view" */
-      ),
+    component: lazy(
+      () =>
+        import(
+          "./views/RegisterPage/RegisterPage" /* webpackChunkName: "register-view" */
+        )
     ),
     private: false,
     restricted: true,
   },
   {
-    name: 'Contacts',
+    name: "Contacts",
     path: paths.contacts,
-    component: lazy(() =>
-      import(
-        './views/ContactsPage/ContactsPage.js' /* webpackChunkName: "contacts-view" */
-      ),
+    component: lazy(
+      () =>
+        import(
+          "./views/ContactsPage/ContactsPage" /* webpackChunkName: "contacts-view" */
+        )
     ),
     private: true,
     restricted: false,

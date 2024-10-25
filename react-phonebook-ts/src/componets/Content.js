@@ -13,10 +13,10 @@ import { refreshCurrentUser } from "../redux/auth/operations.ts";
 const HomePage = lazy(() => import("../views/HomePage/HomePage.tsx"));
 const LoginPage = lazy(() => import("../views/LoginPage/LoginPage.tsx"));
 const RegisterPage = lazy(() =>
-  import("../views/RegisterPage/RegisterPage.js")
+  import("../views/RegisterPage/RegisterPage.tsx")
 );
 const ContactsPage = lazy(() =>
-  import("../views/ContactsPage/ContactsPage.js")
+  import("../views/ContactsPage/ContactsPage.tsx")
 );
 
 const Content = () => {

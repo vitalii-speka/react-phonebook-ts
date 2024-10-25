@@ -9,7 +9,7 @@ export interface IContactState {
   items: IContact[];
   filter: string;
   isLoading: boolean;
-  error: null | string;
+  error: any;
 }
 
 export interface IContactObj {
@@ -17,4 +17,3 @@ export interface IContactObj {
   name: string;
   number: string;
 }
-

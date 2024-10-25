@@ -9,8 +9,8 @@ import {
   selectGetContacts,
   // getContactsError,
 } from '../../redux/contacts/selectors';
-import Alert from '../Alert';
 import { addContact } from '../../redux/contacts/operations';
+import { Alert } from 'componets/Alert';
 
 const { v4: uuidv4 } = require('uuid');
 
