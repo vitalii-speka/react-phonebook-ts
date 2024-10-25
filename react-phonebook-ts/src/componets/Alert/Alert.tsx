@@ -2,7 +2,7 @@ import { FC } from "react";
 import "../../style/App.css";
 import { CSSTransition } from "react-transition-group";
 import { IPropsAlert } from "interface-ts/IProps";
-import { AlertDismissibleExample } from "componets/AlertDismissibleExample";
+import { AlertDismissibleExample } from "./AlertDismissibleExample";
 
 export const Alert: FC<IPropsAlert> = ({ text, alert, variant }) => {
   return (

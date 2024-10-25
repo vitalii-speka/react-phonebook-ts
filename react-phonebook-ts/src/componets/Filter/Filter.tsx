@@ -1,12 +1,11 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
-// import BackspaceIcon from '@material-ui/icons/Backspace';
-// import BackspaceIcon from '@mui/icons-material/Backspace';
 import styles from "./Filter.module.css";
 import { getFilter, selectGetContacts } from "../../redux/contacts/selectors";
 import { changeFilter, clearFilterInput } from "../../redux/contacts/slice";
 import { AppDispatch } from "redux/store";
+import { IconDeleteLeft } from "componets/IconDeleteLeft/IconDeleteLeft";
 
 export default function Filter() {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,7 +14,7 @@ export default function Filter() {
   const contacts = useSelector(selectGetContacts);
 
   const clearInput = useCallback(() => {
-    dispatch(clearFilterInput(''));  /// added (')
+    dispatch(clearFilterInput("")); /// added (')
   }, [dispatch]);
 
   return (
@@ -39,8 +38,7 @@ export default function Filter() {
           />
           {value && (
             <button className={styles.button} onClick={clearInput}>
-              <h2>del</h2>
-              {/* <BackspaceIcon /> */}
+              <IconDeleteLeft />
             </button>
           )}
         </label>

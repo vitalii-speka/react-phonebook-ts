@@ -122,7 +122,7 @@ export default function ContactForm() {
         </form>
       </CSSTransition>
 
-      <Alert text={alertError} alert={notification} />
+      <Alert text={alertError} alert={notification} variant={"primary"} />
     </>
   );
 }
