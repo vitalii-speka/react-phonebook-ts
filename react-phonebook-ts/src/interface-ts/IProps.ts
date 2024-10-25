@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ReactElement } from "react";
 
 export interface IPropsChildren {
   children: ReactNode;
@@ -15,9 +15,12 @@ type VariantAlert =
   | "dark";
 // info https://react-bootstrap.netlify.app/docs/components/alerts
 
-
 export interface IPropsAlert {
   text?: boolean;
   alert: string | null;
   variant?: VariantAlert;
+}
+
+export interface IPropsPublicRoute {
+  children: ReactElement;
 }

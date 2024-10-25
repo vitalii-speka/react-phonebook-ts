@@ -6,15 +6,16 @@ import { CSSTransition } from "react-transition-group";
 import styles from "./Filter.module.css";
 import { getFilter, selectGetContacts } from "../../redux/contacts/selectors";
 import { changeFilter, clearFilterInput } from "../../redux/contacts/slice";
+import { AppDispatch } from "redux/store";
 
 export default function Filter() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const value = useSelector(getFilter);
   const contacts = useSelector(selectGetContacts);
 
   const clearInput = useCallback(() => {
-    dispatch(clearFilterInput());
+    dispatch(clearFilterInput(''));  /// added (')
   }, [dispatch]);
 
   return (
@@ -22,7 +23,7 @@ export default function Filter() {
       <CSSTransition
         in={contacts.length > 0}
         timeout={250}
-        classNames="fade" 
+        classNames="fade"
         unmountOnExit
       >
         <label className={styles.TaskList_item}>

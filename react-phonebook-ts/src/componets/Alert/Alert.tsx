@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "../../style/App.css";
 import { CSSTransition } from "react-transition-group";
 import { IPropsAlert } from "interface-ts/IProps";
-import { AlertDismissibleExampl } from "componets/AlertDismissibleExample";
+import { AlertDismissibleExample } from "componets/AlertDismissibleExample";
 
 export const Alert: FC<IPropsAlert> = ({ text, alert, variant }) => {
   return (
@@ -12,9 +12,7 @@ export const Alert: FC<IPropsAlert> = ({ text, alert, variant }) => {
       classNames="fade-scale"
       unmountOnExit
     >
-      <AlertDismissibleExampl alert={alert} variant={variant} />
+      <AlertDismissibleExample alert={alert} variant={variant} />
     </CSSTransition>
   );
 };
-
-

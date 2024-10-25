@@ -1,16 +1,19 @@
-import { FC, useState } from 'react';
+import { FC, useState } from "react";
+import { Alert, Button } from "react-bootstrap";
 
-import { Alert, Button } from 'react-bootstrap';
 import { IPropsAlert } from "interface-ts/IProps";
 
-export const AlertDismissibleExampl: FC<IPropsAlert> = ({ alert, variant = 'danger' }) => {
+export const AlertDismissibleExample: FC<IPropsAlert> = ({
+  alert,
+  variant = "danger",
+}) => {
   // { images = [], title }
   const [show, setShow] = useState(true);
 
   if (show) {
     return (
       <Alert variant={variant} onClose={() => setShow(false)} dismissible>
-        {variant === 'danger' ? (
+        {variant === "danger" ? (
           <>
             <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
             <p>{alert}</p>
@@ -18,8 +21,6 @@ export const AlertDismissibleExampl: FC<IPropsAlert> = ({ alert, variant = 'dang
         ) : (
           <Alert.Heading>{alert}</Alert.Heading>
         )}
-        {/* <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-        <p>{alert}</p> */}
       </Alert>
     );
   }
@@ -28,7 +29,7 @@ export const AlertDismissibleExampl: FC<IPropsAlert> = ({ alert, variant = 'dang
       Show Alert
     </Button>
   );
-}
+};
 
 /* 
 info https://react-bootstrap.netlify.app/docs/components/alerts

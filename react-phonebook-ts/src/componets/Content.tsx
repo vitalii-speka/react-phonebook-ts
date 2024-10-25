@@ -8,19 +8,20 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRouteRegist from "./PublicRouteRegist";
 import paths from "../paths";
 import { useAuth } from "../hooks/useAuth";
-import { refreshCurrentUser } from "../redux/auth/operations.ts";
+import { refreshCurrentUser } from "../redux/auth/operations";
+import { AppDispatch } from "redux/store";
 
-const HomePage = lazy(() => import("../views/HomePage/HomePage.tsx"));
-const LoginPage = lazy(() => import("../views/LoginPage/LoginPage.tsx"));
+const HomePage = lazy(() => import("../views/HomePage/HomePage"));
+const LoginPage = lazy(() => import("../views/LoginPage/LoginPage"));
 const RegisterPage = lazy(() =>
-  import("../views/RegisterPage/RegisterPage.tsx")
+  import("../views/RegisterPage/RegisterPage")
 );
 const ContactsPage = lazy(() =>
-  import("../views/ContactsPage/ContactsPage.tsx")
+  import("../views/ContactsPage/ContactsPage")
 );
 
 const Content = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { token } = useAuth();
 
   useEffect(() => {
@@ -37,9 +38,12 @@ const Content = () => {
           <Route
             path={paths.contacts}
             element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
+              <PrivateRoute
+                component={<ContactsPage />}
+             />
+              // <PrivateRoute>
+              //   {/* <ContactsPage /> */}
+              // </PrivateRoute>
             }
           />
         </Route>

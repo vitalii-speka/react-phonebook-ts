@@ -7,9 +7,10 @@ import './UserMenu.css';
 
 import defaultAvatar from './default-user.png';
 import { useAuth } from '../../hooks';
+import { AppDispatch } from 'redux/store';
 
 export default function UserMenu() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { token, user } = useAuth();
 
   const onLogOut = useCallback(() => {

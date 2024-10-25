@@ -28,8 +28,8 @@ const contactsSlice = createSlice({
     changeFilter(state, { payload }: PayloadAction<string>) {
       state.filter = payload;
     },
-    clearFilterInput(state, _) {
-      state.filter = "";
+    clearFilterInput(state, { payload }: PayloadAction<string>) {
+      state.filter = payload;
     },
   },
   extraReducers: (builder) => {

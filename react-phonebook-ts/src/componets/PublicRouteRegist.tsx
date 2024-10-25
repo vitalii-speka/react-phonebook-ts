@@ -1,9 +1,10 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import paths from '../paths';
-import { useAuth } from '../hooks';
+import { FC } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import paths from "../paths";
+import { useAuth } from "../hooks";
+import { IPropsChildren } from "interface-ts/IProps";
 
-const PublicRouteRegist = ({ children }) => {
+const PublicRouteRegist: FC<IPropsChildren> = ({ children }) => {
   const { isRegisterIn } = useAuth();
   const { state } = useLocation();
   return !isRegisterIn ? (

@@ -1,10 +1,11 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import paths from '../paths';
-import { useAuth } from '../hooks';
+import { FC } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import paths from "../paths";
+import { useAuth } from "../hooks";
+import { IPropsChildren } from "interface-ts/IProps";
 
-const PrivateRoute = ({ children }) => {
- const { token } = useAuth();
+const PrivateRoute: FC<IPropsChildren> = ({ children }) => {
+  const { token } = useAuth();
   const location = useLocation();
   return token ? children : <Navigate to={paths.login} state={location} />;
 };
