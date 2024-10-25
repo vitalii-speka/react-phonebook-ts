@@ -1,39 +1,36 @@
-import React from 'react';
-import styles from './ContactForm.module.css';
-import { useState, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
-// import { getContacts, addContact } from '../../redux/phonebook';
-import {
-  // getisLoadingContacts,
-  selectGetContacts,
-  // getContactsError,
-} from '../../redux/contacts/selectors';
-import { addContact } from '../../redux/contacts/operations';
-import { Alert } from 'componets/Alert';
+import React from "react";
+import styles from "./ContactForm.module.css";
+import { useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CSSTransition } from "react-transition-group";
+import { selectGetContacts } from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/operations";
+import { Alert } from "componets/Alert";
+import { AppDispatch } from "redux/store";
 
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 export default function ContactForm() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
   const [alertError, setAlertError] = useState(false);
-  const [notification, setNotification] = useState(null);
+  const [notification, setNotification] = useState("");
+  // const [notification, setNotification] = useState(null);
 
   // const contacts = useSelector(getContacts);
   const contacts = useSelector(selectGetContacts);
 
-  const handleCheange = e => {
+  const handleCheange = (e: React.FormEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
 
     switch (name) {
-      case 'name':
+      case "name":
         setName(value);
         break;
 
-      case 'number':
+      case "number":
         setNumber(value);
         break;
 
@@ -44,31 +41,31 @@ export default function ContactForm() {
 
   const alertReset = () => {
     setAlertError(false);
-    setNotification(null);
+    setNotification("");
   };
 
   const handleSubmit = useCallback(
-    e => {
+    (e: React.FormEvent) => {
       e.preventDefault();
 
-      const alertNotifocation = notification => {
+      const alertNotifocation = (notification: string) => {
         setAlertError(true);
         setNotification(notification);
 
         setTimeout(alertReset, 2500);
       };
 
-      if (name === '') {
-        alertNotifocation('Please enter contact name');
+      if (name === "") {
+        alertNotifocation("Please enter contact name");
         return;
       }
 
-      if (number === '') {
-        alertNotifocation('Please enter contact number');
+      if (number === "") {
+        alertNotifocation("Please enter contact number");
         return;
       }
 
-      if (contacts.some(contact => contact.name === name)) {
+      if (contacts.some((contact) => contact.name === name)) {
         alertNotifocation(`${name} is already in contacts`);
         return;
       }
@@ -76,14 +73,14 @@ export default function ContactForm() {
       dispatch(addContact({ name, number }));
       reset();
     },
-    [dispatch, name, number, contacts],
+    [dispatch, name, number, contacts]
   );
 
   const reset = () => {
-    setName('');
-    setNumber('');
+    setName("");
+    setNumber("");
     setAlertError(false);
-    setNotification(null);
+    setNotification("");
   };
 
   const nameInputId = uuidv4();

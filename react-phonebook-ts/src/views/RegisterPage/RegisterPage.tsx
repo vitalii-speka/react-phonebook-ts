@@ -1,47 +1,50 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import './RegisterPage.css';
-import '../../componets/AppBar/AppBar.css';
-import { register } from '../../redux/auth/operations';
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import "./RegisterPage.css";
+import "../../componets/AppBar/AppBar.css";
+import { register } from "../../redux/auth/operations";
 import { Alert } from "componets/Alert";
-import styles from '../../componets/ContactForm/ContactForm.module.css';
-import { CSSTransition } from 'react-transition-group';
-import LinearIndeterminate from '../../componets/spiner/LinearIndeterminate';
-import { useAuth } from '../../hooks';
-import { NavLink } from 'react-router-dom';
-import paths from '../../paths';
-import { AppDispatch } from 'redux/store';
+import styles from "../../componets/ContactForm/ContactForm.module.css";
+import { CSSTransition } from "react-transition-group";
+import LinearIndeterminate from "../../componets/spiner/LinearIndeterminate";
+import { useAuth } from "../../hooks";
+import { NavLink } from "react-router-dom";
+import paths from "../../paths";
+import { AppDispatch } from "redux/store";
 
 export default function RegisterPage() {
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [alertError, setAlertError] = useState<boolean>(false);
   const [notification, setNotification] = useState<string | null>(null);
 
   const dispatch = useDispatch<AppDispatch>();
   const { isRegisterIn, isLoading, errorAuth } = useAuth();
 
-  const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>): void => {
-    const { name, value } = e.currentTarget;
+  const handleChange = useCallback(
+    (e: React.FormEvent<HTMLInputElement>): void => {
+      const { name, value } = e.currentTarget;
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
+      switch (name) {
+        case "name":
+          setName(value);
+          break;
 
-      case 'email':
-        setEmail(value);
-        break;
+        case "email":
+          setEmail(value);
+          break;
 
-      case 'password':
-        setPassword(value);
-        break;
+        case "password":
+          setPassword(value);
+          break;
 
-      default:
-        break;
-    }
-  }, []);
+        default:
+          break;
+      }
+    },
+    []
+  );
 
   const alertReset = () => {
     setAlertError(false);
@@ -49,9 +52,9 @@ export default function RegisterPage() {
   };
 
   const resetInput = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
+    setName("");
+    setEmail("");
+    setPassword("");
     setAlertError(false);
     setNotification(null);
   };
@@ -66,16 +69,16 @@ export default function RegisterPage() {
       setTimeout(alertReset, 2500);
     };
 
-    if (name === '') {
-      alertNotifocation('Please enter your name');
+    if (name === "") {
+      alertNotifocation("Please enter your name");
       return;
     }
-    if (email === '') {
-      alertNotifocation('Please enter your e-mail');
+    if (email === "") {
+      alertNotifocation("Please enter your e-mail");
       return;
     }
-    if (password === '') {
-      alertNotifocation('Please enter your password');
+    if (password === "") {
+      alertNotifocation("Please enter your password");
       return;
     }
 
@@ -90,8 +93,8 @@ export default function RegisterPage() {
         <>
           <Alert
             text={isLoading}
-            alert={'Please wait, sending a request'}
-            variant={'secondary'}
+            alert={"Please wait, sending a request"}
+            variant={"secondary"}
           />
           <LinearIndeterminate />
         </>
@@ -108,8 +111,8 @@ export default function RegisterPage() {
               You registered. Now, you need to move :
               <NavLink
                 to={paths.login}
-                className={navData =>
-                  navData.isActive ? 'navLinkActive' : 'navLink'
+                className={(navData) =>
+                  navData.isActive ? "navLinkActive" : "navLink"
                 }
               >
                 Login
@@ -163,8 +166,8 @@ export default function RegisterPage() {
           )}
         </CSSTransition>
       )}
-      <Alert text={alertError} alert={notification} variant={'info'} />
-      {errorAuth && <Alert text={true} alert={errorAuth} variant={'danger'} />}
+      <Alert text={alertError} alert={notification} variant={"info"} />
+      {errorAuth && <Alert text={true} alert={errorAuth} />}
     </>
   );
 }

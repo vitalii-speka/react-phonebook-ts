@@ -142,7 +142,7 @@ export default function LoginPage() {
 
       <Alert text={alertError} alert={notification} variant={"info"} />
 
-      {errorAuth && <Alert text={true} alert={errorAuth} variant={"danger"} />}
+      {errorAuth && <Alert text={true} alert={errorAuth} />}
     </>
   );
 }

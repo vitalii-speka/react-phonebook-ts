@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 
 import { Alert, Button } from 'react-bootstrap';
+import { IPropsAlert } from "interface-ts/IProps";
 
-export default function AlertDismissibleExample({ alert, variant = 'danger' }) {
+export const AlertDismissibleExampl: FC<IPropsAlert> = ({ alert, variant = 'danger' }) => {
   // { images = [], title }
   const [show, setShow] = useState(true);
 

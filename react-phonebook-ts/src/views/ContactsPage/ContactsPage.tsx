@@ -64,9 +64,7 @@ export default function ContactsPage() {
           <ContactList />
         </>
       )}
-      {errorContacts && (
-        <Alert text={errorContacts} alert={errorContacts} variant={"danger"} />
-      )}
+      {errorContacts && <Alert text={errorContacts} alert={errorContacts} />}
     </div>
   );
 }
