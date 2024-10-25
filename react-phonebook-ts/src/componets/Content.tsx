@@ -1,24 +1,19 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LinearIndeterminate from "./spiner/LinearIndeterminate";
-// import routes from '../routes';
-import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
-import PublicRouteRegist from "./PublicRouteRegist";
 import paths from "../paths";
 import { useAuth } from "../hooks/useAuth";
 import { refreshCurrentUser } from "../redux/auth/operations";
 import { AppDispatch } from "redux/store";
+import { PublicRoute } from "./PublicRoute";
+import { PublicRouteRegist } from "./PublicRouteRegist";
 
 const HomePage = lazy(() => import("../views/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../views/LoginPage/LoginPage"));
-const RegisterPage = lazy(() =>
-  import("../views/RegisterPage/RegisterPage")
-);
-const ContactsPage = lazy(() =>
-  import("../views/ContactsPage/ContactsPage")
-);
+const RegisterPage = lazy(() => import("../views/RegisterPage/RegisterPage"));
+const ContactsPage = lazy(() => import("../views/ContactsPage/ContactsPage"));
 
 const Content = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,14 +32,7 @@ const Content = () => {
           <Route index element={<HomePage />} />
           <Route
             path={paths.contacts}
-            element={
-              <PrivateRoute
-                component={<ContactsPage />}
-             />
-              // <PrivateRoute>
-              //   {/* <ContactsPage /> */}
-              // </PrivateRoute>
-            }
+            element={<PrivateRoute component={<ContactsPage />} />}
           />
         </Route>
 
@@ -52,9 +40,7 @@ const Content = () => {
           path={paths.register}
           element={
             <Suspense fallback={<LinearIndeterminate />}>
-              <PublicRouteRegist>
-                <RegisterPage />
-              </PublicRouteRegist>
+              <PublicRouteRegist component={<RegisterPage />} />
             </Suspense>
           }
         />
@@ -62,9 +48,7 @@ const Content = () => {
           path={paths.login}
           element={
             <Suspense fallback={<LinearIndeterminate />}>
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
+              <PublicRoute component={<LoginPage />} />
             </Suspense>
           }
         />
@@ -75,7 +59,9 @@ const Content = () => {
 
 export default Content;
 
-/* 
+/* routes.map from '../routes'  
+import routes from '../routes';
+
  {routes.map(({ component: Component, ...route }) =>
           route.private ? (
             <PrivateRoute key={route.name} {...route}>

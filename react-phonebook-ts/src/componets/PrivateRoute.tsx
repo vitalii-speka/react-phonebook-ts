@@ -2,24 +2,12 @@ import { FC } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import paths from "../paths";
 import { useAuth } from "../hooks";
-import { IPropsChildren } from "interface-ts/IProps";
+import { IPropsRoute } from "interface-ts/IProps";
 
-const PrivateRoute: FC<IPropsChildren> = ({ children }) => {
+const PrivateRoute: FC<IPropsRoute> = ({ component: Component }) => {
   const { token } = useAuth();
   const location = useLocation();
-  return token ? children : <Navigate to={paths.login} state={location} />;
+  return token ? Component : <Navigate to={paths.login} state={location} />;
 };
 
 export default PrivateRoute;
-
-/* 
-export default function PrivateRoute({ children, ...routeProps }) {
-  const { isLoggedIn } = useAuth();
-
-  return (
-    <Route {...routeProps}>
-      {isLoggedIn ? children : <Navigate to={paths.login} />}
-    </Route>
-  );
-}
-*/

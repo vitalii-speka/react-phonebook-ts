@@ -4,6 +4,10 @@ export interface IPropsChildren {
   children: ReactNode;
 }
 
+export interface IPropsRoute {
+  component: ReactElement;
+}
+
 type VariantAlert =
   | "primary"
   | "secondary"
@@ -19,8 +23,4 @@ export interface IPropsAlert {
   text?: boolean;
   alert: string | null;
   variant?: VariantAlert;
-}
-
-export interface IPropsPublicRoute {
-  children: ReactElement;
 }
