@@ -4,7 +4,6 @@ import ContactForm from "../../componets/ContactForm";
 import ContactList from "../../componets/ContactList";
 import Filter from "../../componets/Filter";
 import "../../style/App.css";
-import ContactsTitle from "../../componets/ContactsTitle";
 
 import {
   getisLoadingContacts,
@@ -18,6 +17,7 @@ import { useAuth } from "../../hooks";
 import { getContacts } from "../../redux/contacts/operations";
 import { instance } from "../../redux/auth/operations";
 import { AppDispatch } from "redux/store";
+import { ContactsTitle } from "componets/ContactsTitle";
 
 export default function ContactsPage() {
   const contacts = useSelector(selectGetContacts);

@@ -1,8 +1,7 @@
-import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import '../../style/App.css';
 
-const ContactsTitle = () => {
+export const ContactsTitle = () => {
   return (
     <CSSTransition
       in={true}
@@ -16,4 +15,3 @@ const ContactsTitle = () => {
   );
 };
 
-export default ContactsTitle;
