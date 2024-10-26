@@ -171,5 +171,3 @@ export default function RegisterPage() {
     </>
   );
 }
-
-// text = true; alert = notification (message)

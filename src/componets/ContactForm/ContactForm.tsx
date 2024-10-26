@@ -17,9 +17,7 @@ export default function ContactForm() {
   const [number, setNumber] = useState("");
   const [alertError, setAlertError] = useState(false);
   const [notification, setNotification] = useState("");
-  // const [notification, setNotification] = useState(null);
 
-  // const contacts = useSelector(getContacts);
   const contacts = useSelector(selectGetContacts);
 
   const handleCheange = (e: React.FormEvent<HTMLInputElement>): void => {

@@ -12,7 +12,6 @@ export default function AppBar() {
     <header className="appBar">
       <Navigation />
       <CSSTransition
-        // nodeRef={nodeRef}
         in={true}
         appear={true}
         timeout={300}

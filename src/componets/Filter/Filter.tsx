@@ -14,7 +14,7 @@ export default function Filter() {
   const contacts = useSelector(selectGetContacts);
 
   const clearInput = useCallback(() => {
-    dispatch(clearFilterInput("")); /// added (')
+    dispatch(clearFilterInput(""));
   }, [dispatch]);
 
   return (

@@ -12,8 +12,6 @@ const HomePages = () => {
     token,
   } = useAuth();
 
-  //{ user: { name, location, age } }
-
   useEffect(() => {
     if (isLoggedIn) {
       document.title = `Hi, ${name}`;

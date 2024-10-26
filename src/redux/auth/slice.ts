@@ -11,7 +11,6 @@ const initialState = {
   user: { id: null, name: null, email: null, subscription: null, avatar: null },
   isRefreshing: false,
   error: null,
-// };
 } as IAuthState;
 
 const handlePending = (state: any, action: any) => {

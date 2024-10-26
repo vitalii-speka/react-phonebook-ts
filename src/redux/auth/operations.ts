@@ -1,14 +1,13 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { useEffect } from 'react';
 import {
   IRegisterCredentials,
   ILoginCredentials,
 } from "../../interface-ts/ICredentials";
 
 export const instance = axios.create({
-  baseURL: "https://nodejs-homework-rest-api-y0ve.onrender.com/api", // production
-  // baseURL: 'http://localhost:8000/api',   // develop
+  baseURL: "https://nodejs-homework-rest-api-y0ve.onrender.com/api",      // production
+  // baseURL: 'http://localhost:8000/api',                                 // develop
 });
 
 const token = {
@@ -19,21 +18,6 @@ const token = {
     instance.defaults.headers.common["Authorization"] = ``;
   },
 };
-
-/* axios #2
-axios.defaults.baseURL = 'http://localhost:8000/api';
-
-// Utility to add JWT
-export const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// Utility to remove JWT
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
-*/
 
 export const register = createAsyncThunk(
   "users",
@@ -48,12 +32,8 @@ export const register = createAsyncThunk(
         console.log("Unexpected error", error);
       }
     }
-    // return rejectWithValue(
-    //   `${error.response.data.message}, code: ${error.response.data.code}`
-    // );
   }
 );
-
 
 export const logIn = createAsyncThunk(
   "users/login",
@@ -68,10 +48,6 @@ export const logIn = createAsyncThunk(
       } else {
         console.log("Unexpected error", error);
       }
-
-      // return rejectWithValue(
-      //   `${error.response.data.message}, code: ${error.response.data.code}`
-      // );
     }
   }
 );
@@ -89,11 +65,6 @@ export const logOut = createAsyncThunk(
       } else {
         console.log("Unexpected error", error);
       }
-      /*  
-      return rejectWithValue(
-        `${error.response.data.message}, code: ${error.response.data.code}`
-      );
-      */
     }
   }
 );
@@ -115,7 +86,6 @@ export const refreshCurrentUser = createAsyncThunk(
       } else {
         console.log("Unexpected error", error);
       }
-      // return thunkApi.rejectWithValue(error.message);
     }
   }
 );

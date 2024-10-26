@@ -18,6 +18,3 @@ export const PageContainer = styled.div`
     max-width: 960px;
   }
 `;
-
-//   width: 100%;
-

@@ -2,25 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../auth/operations";
 import { IContact } from "../../interface-ts/IContact";
 
-/* getContacts  before
-export const getContacts = createAsyncThunk(
-  "contacts/getContacts",
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await instance.get("/contacts", credentials);
-      return data.contacts;
-    } catch (error) {
-      if (error instanceof Error) {
-        return rejectWithValue(error);
-      } else {
-        console.log("Unexpected error", error);
-      }
-      // return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-*/
-
 export const getContacts = createAsyncThunk<
   IContact[],
   undefined,
@@ -66,7 +47,6 @@ export const removeContact = createAsyncThunk<
   { rejectValue: string }
 >("contacts/removeContact", async (id, { rejectWithValue }) => {
   try {
-    // await instance.delete(`/contacts/${id}`);
     const res = await instance.delete(`/contacts/${id}`);
     return res.data.data.contact;
   } catch (error) {
