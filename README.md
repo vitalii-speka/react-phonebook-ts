@@ -7,7 +7,7 @@ Hello! My name is Vitalii Speka, and I am a developer with expertise in building
 ## 2. Project: TypeScript React Phonebook
 
 * Project Name: TypeScript React Phonebook
-* URL: !!! react-phonebook-vs.netlify.app!!! 
+* URL: [!!! react-phonebook-vs.netlify.app!!! ](https://phonebook-react-ts.netlify.app)
 * Objective: To create a user-friendly and efficient contact management app, where users can seamlessly add, edit, view, and delete contact information.
 
 ## 3. Technologies Used
